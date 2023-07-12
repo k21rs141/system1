@@ -4,8 +4,8 @@ import java.util.Collections;
 
 
 class Reserve{
-	int year;
-	int month;
+	int year;//年
+	int month;//月
 	int date;//日にち
 	int rental;//貸し出し時間
 	String title;//	目的
@@ -30,7 +30,7 @@ public class Calender {
 				
 				r1.set(2023, 8, 2, 3, "試合");
 				r2.set(2023, 7, 5, 1, "試合");
-				r3.set(2023, 7, 26, 2, "会議");
+				r3.set(2023, 7, 26, 2, "講義");
 				r4.set(2023, 7, 5, 3, "打ち合わせ");
 				
 				System.out.println("予約済み一覧");
@@ -45,10 +45,25 @@ public class Calender {
 				order [2] = r3;
 				order [3] = r4;
 			
+				System.out.println();
+				String starttime = "9:00";//開始時間
+				String endtime = "18:00";//終了時間
+				String [] timeslotsST = {"9:00", "12:00", "15:00"};//貸し出し開始時間
+				String [] timeslotsET = {"11:50", "14:50", "17:50"};//貸し出し終了時間
+				
+				//--------------------------営業時間表示--------------------------
+				System.out.println("営業時間  " + starttime +" - " + endtime + "\n");
+				
+				//--------------------------貸出時間表示--------------------------
+				System.out.println("貸出時間");
+				for(int i = 0; i < timeslotsST.length; i++) {
+					System.out.println("[" + (i + 1) +"] " + timeslotsST[i] + " - "+ timeslotsET[i]);
+				}
+				System.out.println();
+				
 		
 		Calendar cl = Calendar.getInstance();
 		//-----------------今月-----------------------------
-		System.out.println("\n");
 		int thisYear = cl.get(Calendar.YEAR); //今年
 		int thisMonth = cl.get(Calendar.MONTH); //今月(1月=0、2月=1であるため配列monthの添字に使用)
 		outputCalendar(thisYear,thisMonth, order);
@@ -82,8 +97,9 @@ public class Calender {
 		else {
 			System.out.println(r.year + "年" + r.month + "月" + r.date + "日→[" + r.rental + "] 15:00 - 17:50 " + r.title);
 		}
+		
+		
 	}
-	
 	
 	public static void outputCalendar(int inputYear, int inputMonth, Reserve [] order) {
 		Calendar cl = Calendar.getInstance();
@@ -99,12 +115,7 @@ public class Calender {
 		int lastDay = cl.getActualMaximum(Calendar.DAY_OF_MONTH); //月の最終日
 
 		System.out.print("     " + month[inputMonth] + " " +  inputYear); //年と月を出力
-		System.out.println(); 
-
-		String starttime = "9:00";//開始時間
-		String endtime = "18:00";//終了時間
-		String [] timeslotsST = {"9:00", "12:00", "15:00"};//貸し出し開始時間
-		String [] timeslotsET = {"11:50", "14:50", "17:50"};//貸し出し終了時間
+		System.out.println(); 	
 		
 		//------------------------カレンダー表示---------------------
 		//カレンダーの曜日を出力
@@ -122,16 +133,6 @@ public class Calender {
 			}			
 		}
 		System.out.println("\n");
-		
-		//--------------------------営業時間表示--------------------------
-		System.out.println("営業時間  " + starttime +" - " + endtime + "\n");
-		
-		//--------------------------貸出時間表示--------------------------
-		System.out.println("貸出時間");
-		for(int i = 0; i < timeslotsST.length; i++) {
-			System.out.println("[" + (i + 1) +"] " + timeslotsST[i] + " - "+ timeslotsET[i]);
-		}
-		System.out.println();
 		
 		
 		//--------------------日付(曜日)と空き状況の表示「縦に表示」--------------------------
