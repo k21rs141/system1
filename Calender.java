@@ -31,7 +31,7 @@ public class Calender {
 				r1.set(2023, 8, 2, 3, "‡");
 				r2.set(2023, 7, 5, 1, "‡");
 				r3.set(2023, 7, 26, 2, "u‹`");
-				r4.set(2023, 7, 5, 3, "‘Å‚¿‡‚í‚¹");
+				r4.set(2023, 7, 5, 2, "‘Å‚¿‡‚í‚¹");
 				
 				System.out.println("—\–ñÏ‚İˆê——");
 				showReserve(r1);
@@ -140,6 +140,7 @@ public class Calender {
 		for (int i = firstDay; i <= lastDay; i++) {
 			int u =(firstDayWeek  + i -1) % 7;
 			
+			
 			String name1 ="›";
 			String name2 ="›";
 			String name3 ="›";
@@ -150,6 +151,7 @@ public class Calender {
 				 name[a] = "›";
 			}
 			*/
+			
 			for (int x = 0; x < order.length; x++) {
 				if(order[x].year == inputYear && order[x].month -1 == inputMonth && order[x].date == i) {
 					if(order[x].rental == 1) {							
@@ -168,7 +170,7 @@ public class Calender {
 			if (u == 2) {//’è‹x“ú‚Ì•\¦
 				System.out.println(i + "(" + week[u] + ")¨’è‹x“ú");
 			} else {
-				System.out.println(i + "(" + week[u] +")¨[1]:" + name3 + " [2]:" +name2 + " [3]:" +name3);
+				System.out.println(i + "(" + week[u] +")¨[1]:" + name1 + " [2]:" +name2 + " [3]:" +name3);
 			}
 			
 		}
